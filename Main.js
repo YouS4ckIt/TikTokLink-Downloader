@@ -9,9 +9,9 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
-  var pathToVideo;
+  let pathToVideo;
   if (msg.content.includes("https://vm.tiktok.com/")) {
-    var message = msg.content;
+    let message = msg.content;
     exec("tiktok-scraper video " + message + " -d", (error, stdout, stderr) => {
       if (error) {
         console.log(`error: ${error.message}`);
@@ -23,10 +23,8 @@ client.on("message", (msg) => {
       }
       console.log(`stdout: ${stdout}`);
       msg.delete();
-      var tempmsg = msg.channel.send("Processing....");
-      var temp = `${stdout}`.split(" ");
+      let temp = `${stdout}`.split(" ");
       pathToVideo = temp[2].split(/\n/g)[0];
-      console.log(pathToVideo + "...@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
       const buffer = fs.readFileSync(String(pathToVideo));
       const attachment = new Discord.MessageAttachment(buffer, "tester.mp4");
       msg.reply(attachment);
