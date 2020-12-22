@@ -6,7 +6,6 @@ const TikTokScraper = require("tiktok-scraper");
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-let video = "video";
 let scrapperMsg;
 let options = {
   _: ["video"],
@@ -15,10 +14,11 @@ let options = {
   asyncDownload: 5,
   a: 5,
   "async-download": 5,
-  filepath: "C:\\Users\\YouSuckIt\\Desktop\\DiscordBot",
+  filepath: "C:\\Users\\YouSuckIt\\Desktop\\DiscordBot", //filepath for downloaded video. Not dynamically atm.
 };
 
 client.on("message", async (msg) => {
+  // basic functionality, action on a message in channel.
   if (msg.content.includes("https://vm.tiktok.com/")) {
     var expression = /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/gi;
     let message = msg.content.match(expression);
@@ -30,10 +30,10 @@ client.on("message", async (msg) => {
   }
 });
 
-client.login(process.env.BOTTOKEN);
+client.login(process.env.BOTTOKEN); // Add your DiscordBot Tokken here @@@@@
 const startScraper = async (link) => {
   try {
-    const scraper = await TikTokScraper[video](link, options);
+    const scraper = await TikTokScraper["video"](link, options);
     if (scraper.message) {
       console.log(scraper.message);
       scrapperMsg = scraper.message.split(" ");
