@@ -40,7 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
+package-lock.json
 # TypeScript v1 declaration files
 typings/
 
@@ -83,8 +83,6 @@ typings/
 dist
 # downloaded files/personal ignore
 *.mp4
-*.png
-*.py 
 /TikTok-Api-3.8.6/*
 exampleTest.js
 exampleTest.ts
