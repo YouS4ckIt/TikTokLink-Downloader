@@ -14,7 +14,7 @@ let options = {
   asyncDownload: 5,
   a: 5,
   "async-download": 5,
-  filepath: "C:\\Users\\YouSuckIt\\Desktop\\DiscordBot", //filepath for downloaded video. Not dynamically atm.
+  filepath: __dirname + "/temp/",
 };
 
 client.on("message", async (msg) => {
