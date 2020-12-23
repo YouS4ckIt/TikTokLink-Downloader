@@ -81,13 +81,15 @@ typings/
 # Nuxt.js build / generate output
 .nuxt
 dist
-# downloaded files 
+# downloaded files/personal ignore
 *.mp4
 *.png
 *.py 
 /TikTok-Api-3.8.6/*
 exampleTest.js
 exampleTest.ts
+exampleTs.ts
+exampleTs.js
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and *not* Next.js
