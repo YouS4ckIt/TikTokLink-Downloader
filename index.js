@@ -1,11 +1,47 @@
 require("dotenv").config();
-const fs = require("fs");
 const Discord = require("discord.js");
 const client = new Discord.Client();
+
+const fs = require("fs");
 const TikTokScraper = require("tiktok-scraper");
+const config = require("./config.json");
+const command = require("./command");
+
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  command(client, ["ping", "test"], (message) => {
+    message.channel.send("TEEE");
+  });
+  command(client, "servers", (message) => {
+    client.guilds.cache.forEach((guild) => {
+      console.log(guild);
+      message.channel.send(
+        `${guild.name} has a total of ${guild.memberCount} members`
+      );
+    });
+  });
+  command(client, ["cc", "clearchannnel", "delMsg"], (message) => {
+    if (message.member.hasPermission("ADMINISTRATOR")) {
+      message.channel.messages.fetch().then((results) => {
+        //message.channel.bulkDelete(results);
+        message.channel.send(
+          "Are you sure you want to delete everything in this channel ?"
+        );
+        //console.log(results);
+      });
+    }
+  });
+  command(client, "status", (message) => {
+    const content = message.content.replace("!status ", "");
+    client.user.setPresence({
+      activity: {
+        name: content,
+        type: 0,
+      },
+    });
+  });
 });
+
 let scrapperMsg;
 let options = {
   _: ["video"],
