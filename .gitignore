@@ -41,6 +41,7 @@ build/Release
 node_modules/
 jspm_packages/
 package-lock.json
+
 # TypeScript v1 declaration files
 typings/
 
@@ -84,10 +85,8 @@ dist
 # downloaded files/personal ignore
 *.mp4
 /TikTok-Api-3.8.6/*
-exampleTest.js
-exampleTest.ts
-exampleTs.ts
-exampleTs.js
+oldCommand.js
+test.js
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and *not* Next.js
