@@ -5,6 +5,7 @@ const fs = require("fs");
 const TikTokScraper = require("tiktok-scraper");
 const config = require("./config.json");
 const util = require("./util");
+const welcome = require("./welcome");
 const client = new Discord.Client();
 const confirmReaction = ["✅", "❌"];
 
@@ -24,6 +25,7 @@ client.on("ready", () => {
     fs.mkdirSync(dir);
   }
   console.log(`Logged in as ${client.user.tag}!`);
+  welcome(client);
   const baseFile = "command-base.js";
   const commandBase = require(`./commands/${baseFile}`);
 

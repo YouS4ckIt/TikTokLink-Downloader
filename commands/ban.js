@@ -11,8 +11,17 @@ module.exports = {
     const tag = `<@${member.id}>`;
     if (target) {
       const targetMember = message.guild.members.cache.get(target.id);
-      targetMember.ban({ days: 0, reason: splitedMsg });
-      message.channel.send(`${tag} the user: ${target} has been banned`);
+      targetMember
+        .ban({ days: 0, reason: splitedMsg })
+        .then(() => {
+          message.channel.send(`${tag} the user: ${target} has been banned`);
+        })
+        .catch((error) => {
+          message.channel.send(
+            `${tag} the bot doesn't have enough permissions to perform this operation.`
+          );
+          console.error(error);
+        });
     } else {
       message.channel.send(`${tag} Please tag someone to ban.`);
     }
